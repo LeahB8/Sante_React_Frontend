@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
-import HomePage from "./containers/HomePage";
+import LandingPage from "./containers/LandingPage";
 import SignInForm from "./components/LogIn";
 import Header from "./pages/Header";
+import SignUpForm from "./components/SignUp";
+import NavBar from "./containers/NavBar";
+import ReactDOM from "react-dom";
 
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -39,10 +42,18 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <Header />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/signin/" component={SignInForm} />
+          <Route exact path="/" component={LandingPage} />
+          <Route
+            path="/signin/"
+            component={props => <SignInForm {...props} />}
+          />
+          <Route
+            path="/signup/"
+            component={props => <SignUpForm {...props} />}
+          />
         </Switch>
       </div>
     );

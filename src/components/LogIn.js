@@ -17,7 +17,7 @@ export default class SignInForm extends React.Component {
         if (data.error) {
           alert(data.error)
         } else {
-          this.props.signin(data)
+          signin(data)
         }
       })
   }

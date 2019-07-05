@@ -8,17 +8,24 @@ const Header = props => (
   <header className="App-header">
     <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
-        <Link className="Homepage-link" to="/">
-          Home Page
-        </Link>
-        <Link className="Homepage-link" to="/signin">
-          Log In
-        </Link>
-        <Link className="Homepage-link" to="/signup">
-          SignUp
-        </Link>
-      </div>
-      <div>
+        <ul>
+          <li>
+            <Link className="LandingPage-link" to="/">
+              Home Page
+            </Link>
+          </li>
+          <li>
+            <Link className="LandingPage-link" to="/signin">
+              Log In
+            </Link>
+          </li>
+          <li>
+            <Link className="LandingPage-link" to="/signup">
+              SignUp
+            </Link>
+          </li>
+        </ul>
+
         <img src={Logo} className="App-logo" alt="logo" />
         <br />
       </div>
@@ -36,9 +43,5 @@ const Header = props => (
     </h1>
   </header>
 );
-
-//------------------------------------------------------------------------------------------------------------------
-// EXPORT
-//------------------------------------------------------------------------------------------------------------------
 
 export default Header;

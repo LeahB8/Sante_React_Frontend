@@ -14,8 +14,6 @@ import { createUser } from '../services/api'
  
 export default class SignUpForm extends Component {
 
-// inital state
-//------------------------------------------------------------------------------------------------------------------  
   state = {
     username: '',
     password: ''
@@ -24,11 +22,9 @@ export default class SignUpForm extends Component {
   handleSubmit = event => {
   event.preventDefault()
   
-  alert("User added")
-  // let name = event.target.username.value
-  // let passord = event.target.password.value
 
   createUser(event.target.username.value, event.target.password.value)
+    .then(alert("User added"))
 
   this.props.history.push('/signin')
 

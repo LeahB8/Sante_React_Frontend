@@ -9,6 +9,7 @@ import NavBar from "./containers/NavBar";
 
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 
 export default class App extends Component {
   state = {
@@ -41,10 +42,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <NavBar />
+        {/* <Header />
+        <NavBar /> */}
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route path="/home" component={HomePage} />
           <Route
             path="/signin/"
             component={props => <SignInForm {...props} />}

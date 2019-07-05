@@ -15,11 +15,17 @@ export function validate () {
     }).then(resp => resp.json())
 }
 
-export function getConcerns () {
+export function getUserConcerns () {
     return fetch('http://localhost:3001/concerns', {
 	    headers: { 'Authorisation': localStorage.token }
     }).then(resp => resp.json())
 }
+
+export function getConcerns () {
+    return fetch('http://localhost:3001/concerns')
+    .then(resp => resp.json())
+}
+
 
 export function createUser(username, password){ 
     return fetch('http://localhost:3001/users', {
@@ -35,4 +41,8 @@ export function createUser(username, password){
 
 }
 
-export default { signin, validate, getConcerns, createUser }
+export function fetchConcerns() {
+    return fetch()
+}
+
+export default { signin, validate, getConcerns, createUser, getUserConcerns }

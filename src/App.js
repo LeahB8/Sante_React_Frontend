@@ -6,8 +6,6 @@ import Header from "./pages/Header";
 import SignUpForm from "./components/SignUp";
 import ConcernList from "./components/ConcernList";
 
-// import NavBar from './containers/NavBar'
-
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 

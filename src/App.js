@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import "./App.css";
 import HomePage from "./containers/HomePage";
 import SignInForm from "./components/LogIn";
-import Header from './pages/Header'
+import Header from "./pages/Header";
 
 import { validate } from "./services/api";
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default class App extends Component {
   state = {
@@ -40,7 +41,7 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/"component={HomePage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/signin/" component={SignInForm} />
         </Switch>
       </div>

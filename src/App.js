@@ -6,7 +6,6 @@ import SignInForm from "./components/LogIn";
 import Header from "./pages/Header";
 import SignUpForm from "./components/SignUp";
 import NavBar from "./containers/NavBar";
-import ReactDOM from "react-dom";
 
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -42,8 +41,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
         <Header />
+        <NavBar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route

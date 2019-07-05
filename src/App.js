@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import "./App.css";
 import LandingPage from "./containers/LandingPage";
 import SignInForm from "./components/LogIn";
 import Header from "./pages/Header";
 import SignUpForm from "./components/SignUp";
-// import NavBar from './containers/NavBar'
-import ReactDOM from "react-dom";
 
+// import NavBar from './containers/NavBar'
+
+import ReactDOM from "react-dom";
 
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";

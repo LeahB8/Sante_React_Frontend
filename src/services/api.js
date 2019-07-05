@@ -22,7 +22,7 @@ export function getConcerns () {
 }
 
 export function createUser(username, password){ 
-    return fetch('http://localhost:3000/signup', {
+    return fetch('http://localhost:3001/users', {
        method: 'POST',
        headers: {
            'Content-Type': 'application/json'

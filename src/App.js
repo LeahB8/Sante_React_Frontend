@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import "./App.css";
 import LandingPage from "./containers/LandingPage";
 import SignInForm from "./components/LogIn";
 import Header from "./pages/Header";
 import SignUpForm from "./components/SignUp";
+import ConcernList from "./components/ConcernList";
 
 // import NavBar from './containers/NavBar'
-
-import ReactDOM from "react-dom";
 
 import { validate } from "./services/api";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -18,7 +16,7 @@ export default class App extends Component {
     username: ""
   };
 
-  signin = user => {
+  signinAndSetToken = user => {
     this.setState({ username: user.username });
     this.props.history.push("/concerns");
     localStorage.setItem("token", user.token);
@@ -35,7 +33,7 @@ export default class App extends Component {
         if (data.error) {
           alert(data.error);
         } else {
-          this.signin(data);
+          this.signinAndSetToken(data);
         }
       });
     }
@@ -46,17 +44,16 @@ export default class App extends Component {
       <div className="App">
         {/* <NavBar /> */}
         <Header />
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route
-            path="/signin/"
-            component={props => <SignInForm {...props} />}
-          />
-          <Route
-            path="/signup/"
-            component={props => <SignUpForm {...props} />}
-          />
-        </Switch>
+        <Route
+          exact
+          path="/"
+          component={props => (
+            <LandingPage
+              {...props}
+              signinAndSetToken={this.signinAndSetToken}
+            />
+          )}
+        />
       </div>
     );
   }

@@ -41,20 +41,6 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-        {/* <NavBar /> */}
-        <Header />
-        <Route
-          exact
-          path="/"
-          component={props => (
-            <LandingPage
-              {...props}
-              signinAndSetToken={this.signinAndSetToken}
-            />
-          )}
-        />
-=======
         {/* <Header />
         <NavBar /> */}
         <Switch>
@@ -69,7 +55,6 @@ export default class App extends Component {
             component={props => <SignUpForm {...props} />}
           />
         </Switch>
->>>>>>> home
       </div>
     );
   }

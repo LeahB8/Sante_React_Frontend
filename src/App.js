@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
-import LandingPage from "./containers/LandingPage";
-import SignInForm from "./components/LogIn";
-import Header from "./pages/Header";
-import SignUpForm from "./components/SignUp";
-import ConcernList from "./components/ConcernList";
+import ContentArea from "./containers/ContentArea";
+import ReactDOM from "react-dom";
+import NavBar from "./containers/NavBar";
 
 import { validate } from "./services/api";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import { Route, Switch, withRouter } from 'react-router-dom'
+
 
 export default class App extends Component {
   state = {
-    username: ""
+    user: {},
+    username: ''
   };
 
   signinAndSetToken = user => {
-    this.setState({ username: user.username });
+    this.setState({ user: {...user}, username: user.username });
     this.props.history.push("/concerns");
     localStorage.setItem("token", user.token);
   };
@@ -39,22 +38,11 @@ export default class App extends Component {
   }
 
   render() {
+    const { username, user } = this.state
     return (
       <div className="App">
-        {/* <Header />
-        <NavBar /> */}
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/home" component={HomePage} />
-          <Route
-            path="/signin/"
-            component={props => <SignInForm {...props} />}
-          />
-          <Route
-            path="/signup/"
-            component={props => <SignUpForm {...props} />}
-          />
-        </Switch>
+        <NavBar />
+        <ContentArea username={username} user={user} signinAndSetToken={this.signinAndSetToken} />
       </div>
     );
   }

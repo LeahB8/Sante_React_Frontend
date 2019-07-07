@@ -26,9 +26,8 @@ export function getConcerns () {
     .then(resp => resp.json())
 }
 
-
 export function createUser(username, password){ 
-    return fetch('http://localhost:3001/users', {
+    return fetch(baseUrl + '/users', {
        method: 'POST',
        headers: {
            'Content-Type': 'application/json'
@@ -37,12 +36,26 @@ export function createUser(username, password){
            username: username,
            password: password
        })
-   }).then(resp => resp.json()) //
-
+   }).then(resp => resp.json()) 
 }
 
-export function fetchConcerns() {
-    return fetch()
+export function fetchUserInfo(user) {
+    return fetch(baseUrl + `/users/${user.id}`)
 }
 
-export default { signin, validate, getConcerns, createUser, getUserConcerns }
+export function postUserInfoToServer(user) {
+    return fetch(baseUrl + `/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            
+        })
+    }).then(resp => resp.json()) 
+
+}
+ 
+
+
+export default { signin, validate, getConcerns, createUser, getUserConcerns, fetchUserInfo }

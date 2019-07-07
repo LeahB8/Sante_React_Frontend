@@ -3,11 +3,15 @@ import "../App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import ConcernList from "../components/ConcernList";
 import { getConcerns } from "../services/api";
+import { postUserInfoToServer } from "../services/api";
 
-import SignInForm from "../components/LogIn";
-import SignUpForm from "../components/SignUp";
 
-export default class LandingPage extends React.Component {
+import SignInForm from "../pages/LogIn";
+import SignUpForm from "../pages/SignUp";
+import WelcomePage from "../pages/WelcomePage";
+import UserProfile from "../pages/UserProfile";
+
+export default class ContentArea extends React.Component {
   state = {
     concerns: []
   };
@@ -18,17 +22,19 @@ export default class LandingPage extends React.Component {
 
   render() {
     const { concerns } = this.state;
-    const { signinAndSetToken } = this.props;
+    const { signinAndSetToken, username, user } = this.props;
 
     return (
       <div>
-        <h3>Welcome to Santé</h3>
-        <h4>An easy way to manage your health</h4>
         <Switch>
+          <Route exact path="/" component={WelcomePage} />
+
           <Route
             exact
             path="/signin"
-            component={props => <SignInForm  signinAndSetToken={signinAndSetToken} {...props} />}
+            component={props => (
+              <SignInForm signinAndSetToken={signinAndSetToken} {...props} />
+            )}
           />
           <Route
             exact
@@ -37,8 +43,8 @@ export default class LandingPage extends React.Component {
           />
           <Route
             exact
-            path="/concerns"
-            component={props => <ConcernList {...props} concerns={concerns} />}
+            path="/profile"
+            component={props => <UserProfile {...props} concerns={concerns} user={user} username={username} postUserInfoToServer={postUserInfoToServer} />}
           />
         </Switch>
       </div>

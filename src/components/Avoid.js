@@ -1,8 +1,8 @@
 import React from "react";
 
-export default class Consume extends React.Component {
+export default class Avoid extends React.Component {
   state = {
-    consume: []
+    avoid: []
   };
 
   componentDidMount() {
@@ -16,7 +16,7 @@ export default class Consume extends React.Component {
         .then(data => data.json())
         .then(data =>
           this.setState({
-            avoid: [...this.state.consume, data]
+            avoid: [...this.state.avoid, data]
           })
         );
     });
@@ -24,15 +24,8 @@ export default class Consume extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="card">
-        <h4>Foods to Consume</h4>
-
-        <form>
-=======
       <div>
         {/* <form>
->>>>>>> 9778f3ed1bb624191cd1975d97bd74cdcc815024
           <select onChange={this.handleClick}>
             {concerns.map(concern => (
               <option id={concern.problemID} value={concern.problemID}>
@@ -41,7 +34,7 @@ export default class Consume extends React.Component {
             ))}
           </select>
         </form> */}
-        <p>{this.state.consume}</p>
+        <p>{this.state.avoid}</p>
       </div>
     );
   }

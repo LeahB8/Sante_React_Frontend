@@ -7,7 +7,7 @@ import UserIcon from "../userIcon.jpg";
 import UserGoals from "../components/UserGoals";
 import { fetchUserInfo } from "../services/api";
 import Consume from "../components/Consume";
-
+import Avoid from "../components/Avoid";
 export default class UserProfile extends React.Component {
   state = {
     firstName: "",
@@ -18,20 +18,19 @@ export default class UserProfile extends React.Component {
     userConcerns: []
   };
 
-    state = {
-            firstName: '',
-            weight: '',
-            height: '',
-            age: '',
-            goals: [],
-            userConcerns: []
-    }
+  state = {
+    firstName: "",
+    weight: "",
+    height: "",
+    age: "",
+    goals: [],
+    userConcerns: []
+  };
 
-    // componentDidMount() {
-    //     fetchUserInfo(user)
-    //     .then(data => this.setState({ firstName: data.firstName, weight: data.weight, height: data.height, age: data.age, goals: data.goals, userConcerns: data.concerns }))
-    // }
-
+  // componentDidMount() {
+  //     fetchUserInfo(user)
+  //     .then(data => this.setState({ firstName: data.firstName, weight: data.weight, height: data.height, age: data.age, goals: data.goals, userConcerns: data.concerns }))
+  // }
 
   handleInput = event => {
     this.setState({
@@ -39,23 +38,22 @@ export default class UserProfile extends React.Component {
     });
   };
 
-    //   updateGoals = event => {
-    //     event.preventDefault()
-    //     event.persist()
-    //     const { goals } = this.state;
-    //     this.setState({goals: [...goals, event.target.value]})
-        
-    //     let userInfo = {
-    //         firstName: firstName,
-    //         weight: weight,
-    //         height: height,
-    //         age: age,
-    //         goals: goals,
-    //         userConcerns: userConcerns
-    //       };
-    //       postUserInfoToServer(userInfo);
-    //   }
+  //   updateGoals = event => {
+  //     event.preventDefault()
+  //     event.persist()
+  //     const { goals } = this.state;
+  //     this.setState({goals: [...goals, event.target.value]})
 
+  //     let userInfo = {
+  //         firstName: firstName,
+  //         weight: weight,
+  //         height: height,
+  //         age: age,
+  //         goals: goals,
+  //         userConcerns: userConcerns
+  //       };
+  //       postUserInfoToServer(userInfo);
+  //   }
 
   updateGoals = event => {
     const { firstName, weight, height, age, goals, userConcerns } = this.state;
@@ -132,7 +130,8 @@ export default class UserProfile extends React.Component {
           updateGoals={this.updateGoals}
           handleSubmit={this.handleSubmit}
         />
-        <Consume concerns={concerns} />
+        <Consume userConcerns={userConcerns} />
+        <Avoid userConcerns={userConcerns} />
       </div>
     );
   }

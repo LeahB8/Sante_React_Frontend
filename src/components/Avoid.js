@@ -1,8 +1,8 @@
 import React from "react";
 
-export default class Consume extends React.Component {
+export default class Avoid extends React.Component {
   state = {
-    consume: []
+    avoid: []
   };
 
   componentDidMount() {
@@ -16,7 +16,7 @@ export default class Consume extends React.Component {
         .then(data => data.json())
         .then(data =>
           this.setState({
-            avoid: [...this.state.consume, data]
+            avoid: [...this.state.avoid, data]
           })
         );
     });
@@ -34,7 +34,7 @@ export default class Consume extends React.Component {
             ))}
           </select>
         </form> */}
-        <p>{this.state.consume}</p>
+        <p>{this.state.avoid}</p>
       </div>
     );
   }

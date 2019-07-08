@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import "./App.css";
 import LandingPage from "./containers/LandingPage";
 import SignInForm from "./components/LogIn";

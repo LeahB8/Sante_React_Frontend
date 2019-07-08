@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 
 import "./App.css";
+import NavBar from "./containers/NavBar";
 import ContentArea from "./containers/ContentArea";
 import ReactDOM from "react-dom";
-import NavBar from "./containers/NavBar";
 
 import { validate } from "./services/api";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
-export default class App extends Component {
+
+class App extends Component {
   state = {
     user: {},
-    username: ""
+    username: '',
+    loggedIn: false
   };
 
   signinAndSetToken = user => {
-    this.setState({ user: { ...user }, username: user.username });
+    this.setState({ user: {...user}, username: user.username, loggedIn: true });
     this.props.history.push("/concerns");
     localStorage.setItem("token", user.token);
   };
 
   signout = () => {
-    this.setState({ username: "" });
+    this.setState({ user: {}, username: "", loggedIn: false });
     localStorage.removeItem("token");
   };
 
@@ -41,13 +43,11 @@ export default class App extends Component {
     const { username, user } = this.state;
     return (
       <div className="App">
-        <NavBar />
-        <ContentArea
-          username={username}
-          user={user}
-          signinAndSetToken={this.signinAndSetToken}
-        />
+        <NavBar signout={this.signout} />
+        <ContentArea username={username} user={user} signinAndSetToken={this.signinAndSetToken} />
       </div>
     );
   }
 }
+
+export default withRouter(App)

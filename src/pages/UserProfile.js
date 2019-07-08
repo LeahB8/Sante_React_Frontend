@@ -18,19 +18,20 @@ export default class UserProfile extends React.Component {
     userConcerns: []
   };
 
-  componentDidMount() {
-    const { user } = this.props;
-    fetchUserInfo(user).then(data =>
-      this.setState({
-        firstName: data.firstName,
-        weight: data.weight,
-        height: data.height,
-        age: data.age,
-        goals: data.goals,
-        userConcerns: data.concerns
-      })
-    );
-  }
+    state = {
+            firstName: '',
+            weight: '',
+            height: '',
+            age: '',
+            goals: [],
+            userConcerns: []
+    }
+
+    // componentDidMount() {
+    //     fetchUserInfo(user)
+    //     .then(data => this.setState({ firstName: data.firstName, weight: data.weight, height: data.height, age: data.age, goals: data.goals, userConcerns: data.concerns }))
+    // }
+
 
   handleInput = event => {
     this.setState({
@@ -38,20 +39,23 @@ export default class UserProfile extends React.Component {
     });
   };
 
-  handleSubmit = event => {
-    const { firstName, weight, height, age, goals, userConcerns } = this.state;
-    const { postUserInfoToServer } = this.props;
-    event.preventDefault();
-    let userInfo = {
-      firstName: firstName,
-      weight: weight,
-      height: height,
-      age: age,
-      goals: goals,
-      userConcerns: userConcerns
-    };
-    postUserInfoToServer(userInfo);
-  };
+    //   updateGoals = event => {
+    //     event.preventDefault()
+    //     event.persist()
+    //     const { goals } = this.state;
+    //     this.setState({goals: [...goals, event.target.value]})
+        
+    //     let userInfo = {
+    //         firstName: firstName,
+    //         weight: weight,
+    //         height: height,
+    //         age: age,
+    //         goals: goals,
+    //         userConcerns: userConcerns
+    //       };
+    //       postUserInfoToServer(userInfo);
+    //   }
+
 
   updateGoals = event => {
     const { firstName, weight, height, age, goals, userConcerns } = this.state;

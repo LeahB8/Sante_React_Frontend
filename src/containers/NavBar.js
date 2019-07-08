@@ -25,14 +25,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  function handleChange(event) {
-    setAuth(event.target.checked);
+  function handleChange() {
+    // setAuth(event.target.checked);
+    props.signout()
   }
 
   function handleMenu(event) {
@@ -45,6 +46,8 @@ export default function NavBar() {
 
   return (
     <div className={classes.root}>
+              <button label="Log Out" onClick={handleChange} />  
+    
       <FormGroup>
         <FormControlLabel
           control={
@@ -57,6 +60,7 @@ export default function NavBar() {
           label={auth ? "Logout" : "Login"}
         />
       </FormGroup>
+
       <AppBar position="static">
         <Toolbar>
           <IconButton

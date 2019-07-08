@@ -15,11 +15,11 @@ export function validate() {
   }).then(resp => resp.json());
 }
 
-export function getUserConcerns() {
-  return fetch("http://localhost:3001/concerns", {
-    headers: { Authorisation: localStorage.token }
-  }).then(resp => resp.json());
-}
+// export function getUserConcerns() {
+//   return fetch(`http://localhost:3001/users/${user.id}}/concerns`, {
+//     headers: { Authorisation: localStorage.token }
+//   }).then(resp => resp.json());
+// }
 
 export function getConcerns() {
   return fetch("http://localhost:3001/concerns").then(resp => resp.json());
@@ -42,21 +42,14 @@ export function fetchUserInfo(user) {
   return fetch(baseUrl + `/users/${user.id}`);
 }
 
-export function postUserInfoToServer(user) {
-  return fetch(baseUrl + `/users/${user.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({})
-  }).then(resp => resp.json());
-}
+
+
 
 export default {
   signin,
   validate,
   getConcerns,
   createUser,
-  getUserConcerns,
+//   getUserConcerns,
   fetchUserInfo
 };

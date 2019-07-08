@@ -9,6 +9,7 @@ export default class Consume extends React.Component {
     const { userConcerns } = this.props;
 
     userConcerns.forEach(concern => {
+      console.log(concern)
       fetch(
         `https://api.nutridigm.com/api/v1/nutridigm/topitemstoavoid?subscriptionId=test&problemId=` +
           `${concern.problemID}`
@@ -16,7 +17,7 @@ export default class Consume extends React.Component {
         .then(data => data.json())
         .then(data =>
           this.setState({
-            avoid: [...this.state.consume, data]
+            consume: [...this.state.consume, data]
           })
         );
     });
@@ -24,15 +25,12 @@ export default class Consume extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div className="card">
         <h4>Foods to Consume</h4>
 
-        <form>
-=======
-      <div>
+        {/* <form> */}
+      {/* <div> */}
         {/* <form>
->>>>>>> 9778f3ed1bb624191cd1975d97bd74cdcc815024
           <select onChange={this.handleClick}>
             {concerns.map(concern => (
               <option id={concern.problemID} value={concern.problemID}>

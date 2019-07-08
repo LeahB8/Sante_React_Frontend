@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import "./App.css";
 import NavBar from "./containers/NavBar";
 import ContentArea from "./containers/ContentArea";
@@ -39,7 +40,7 @@ class App extends Component {
   }
 
   render() {
-    const { username, user } = this.state
+    const { username, user } = this.state;
     return (
       <div className="App">
         <NavBar signout={this.signout} />

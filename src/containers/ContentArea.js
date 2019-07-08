@@ -5,7 +5,6 @@ import ConcernList from "../components/ConcernList";
 import { getConcerns } from "../services/api";
 import { postUserInfoToServer } from "../services/api";
 
-
 import SignInForm from "../pages/LogIn";
 import SignUpForm from "../pages/SignUp";
 import WelcomePage from "../pages/WelcomePage";
@@ -44,7 +43,15 @@ export default class ContentArea extends React.Component {
           <Route
             exact
             path="/profile"
-            component={props => <UserProfile {...props} concerns={concerns} user={user} username={username} postUserInfoToServer={postUserInfoToServer} />}
+            component={props => (
+              <UserProfile
+                {...props}
+                concerns={concerns}
+                user={user}
+                username={username}
+                postUserInfoToServer={postUserInfoToServer}
+              />
+            )}
           />
         </Switch>
       </div>

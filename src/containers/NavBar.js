@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,7 +12,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import ReactDOM from "react-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {

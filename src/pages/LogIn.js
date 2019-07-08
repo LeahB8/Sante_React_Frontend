@@ -17,9 +17,7 @@ export default class SignInForm extends React.Component {
         alert(data.error);
       } else {
           this.props.signinAndSetToken(data)
-        // set the token in the localstorage
-        // consider the user logged in (whatever that means in your app)
-        this.setState({ username: "", password: "" })
+          this.setState({ username: "", password: "" })
       }
     });
   };

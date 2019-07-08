@@ -6,12 +6,14 @@ export default class ConcernList extends React.Component {
     const { concerns, userConcerns } = this.props;
 
     return (
-      <div>
-        <div>
+      <div className="card">
+       <h4>Health and Dietary Concerns</h4>
+
+        {/* <div> */}
           {/* {userConcerns.map(userConcern => (
             <p>{userConcern}</p>
           ))} */}
-        </div>
+        {/* </div> */}
 
         <form>
           <select>
@@ -19,6 +21,9 @@ export default class ConcernList extends React.Component {
               <option>{concern.problem}</option>
             ))}
           </select>
+          <button type="submit">
+            Add
+          </button>
         </form>
       </div>
     );

@@ -7,6 +7,8 @@ import UserIcon from "../userIcon.jpg";
 import UserGoals from "../components/UserGoals";
 import { fetchUserInfo } from "../services/api";
 import Consume from "../components/Consume";
+import "../App.css";
+
 
 export default class UserProfile extends React.Component {
   state = {
@@ -81,58 +83,63 @@ export default class UserProfile extends React.Component {
 
     return (
       <div>
-        <h1>Welcome, {username}</h1>
-        <img src={UserIcon} />
-        <div>
-          <ul>
-            <li>Name: {firstName}</li>
-            <li>Weight: {weight} KG</li>
-            <li>Height: {height} CM</li>
-            <li>Age: {age}</li>
-          </ul>
-        </div>
+       <h1>Welcome, {username}</h1>
+          <div className="flexbox-div">
+            <div className="card">
+                <img className="user-image" src={UserIcon} />
+                   <div className="container">
+                        <p>Name: <b>{firstName}</b></p>
+                        <p>Weight: <b>{weight} kg</b> </p>
+                        <p>Height: <b>{height} cm</b></p>
+                        <p>Age: <b>{age}</b></p>
+                    </div>
+            </div>
 
-        <form>
+
+        <form className="card">
+            <h4>Update my Info</h4>
           <input
             name="firstName"
             value={firstName}
             type="text"
             placeholder="First Name"
             onChange={handleInput}
-          />
+          /><br></br>
           <input
             name="weight"
             value={weight}
             type="number"
             placeholder="Weight (KG)"
             onChange={handleInput}
-          />
+          /><br></br>
           <input
             name="height"
             value={height}
             type="number"
             placeholder="Height (CM)"
             onChange={handleInput}
-          />
+          /><br></br>
           <input
             name="age"
             value={age}
             type="number"
             placeholder="Age"
             onChange={handleInput}
-          />
+          /><br></br>
           <button type="submit" onClick={handleSubmit}>
             Submit
           </button>
         </form>
 
-        <ConcernList concerns={concerns} userConcerns={userConcerns} />
-        <UserGoals
-          goals={goals}
-          updateGoals={this.updateGoals}
-          handleSubmit={this.handleSubmit}
-        />
-        <Consume concerns={concerns} />
+            <ConcernList concerns={concerns} userConcerns={userConcerns} key={user.id} />
+            <UserGoals
+            goals={goals}
+            updateGoals={this.updateGoals}
+            handleSubmit={this.handleSubmit}
+            key={user.id} 
+            />
+            <Consume concerns={concerns} key={user.id}  />
+        </div>
       </div>
     );
   }

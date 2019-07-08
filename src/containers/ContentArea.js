@@ -47,6 +47,7 @@ export default class ContentArea extends React.Component {
               <UserProfile
                 {...props}
                 concerns={concerns}
+                key={user.id} 
                 user={user}
                 username={username}
                 postUserInfoToServer={postUserInfoToServer}

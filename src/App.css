@@ -1,11 +1,10 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Lato', sans-serif;
 }
 
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 20vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .App-header {
@@ -16,6 +15,18 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navbar-header {
+  /* background-color: #0d6fee; */
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* font-size: calc(10px + 2vmin); */
+  font-size: 80px;
   color: white;
 }
 
@@ -46,46 +57,56 @@
   background-color: #09a9f3;
 }
 
-nav {
-  overflow: auto;
-  padding: 0 5%;
-  text-align: right;
-
-  
+.navbar {
+  font-family: 'Lato', sans-serif;
+  display: flex;
 }
 
-.main_navigation {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  z-index: 10;
-  height: 70px;
-  float: right;
-  text-align: right;
-
-}
-
-.main_navigation li {
-  display: inline-block;
-  line-height: 30px;
-  font-size: 16px;
-  margin: 10px 0;
-  padding: 10px 0;
-  min-width: 100px;
-  position: relative;
-  text-decoration: none;
-}
-
-.main_navigation li:hover::after {
-  content: "";
-  position: absolute;
+.navbar-link {
+  float: left;
   display: block;
-  width: 50%;
-  height: 3px;
-  left: 50%;
-  bottom: 0;
-  background-color: #0ff;
-  /* transition: .3s; */
-  transform: translate(-50%, 0);
+  color: #716F72;
+  padding: 10px 12px;
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
 }
+
+.sign-in-up-form {
+  text-align: center;
+  margin: 30px 30px;
+  border: 30px 30px;
+  text-decoration: none;
+
+}
+
+.Homepage-link {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+  align-content: right;
+
+  text-decoration: none;
+  color: #fff;
+
+}
+
+.homepage-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  max-width:20%;
+  max-height:20%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+
 

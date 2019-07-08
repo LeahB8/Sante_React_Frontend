@@ -12,6 +12,15 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import SignInForm from "../pages/LogIn";
+import SignUpForm from "../pages/SignUp";
+import WelcomePage from "../pages/WelcomePage";
+import UserProfile from "../pages/UserProfile";
+import "../App.css";
+import Logo from "../Logo.png";
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,14 +40,33 @@ export default function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  function handleChange() {
-    // setAuth(event.target.checked);
-    props.signout()
-  }
+const sessionHeader = () => {
+    return props.loggedIn ? 
+      ( <div>
+        <Link onClick={props.signout} className="Homepage-link" to="/">
+          Sign Out
+        </Link>
+        </div> )
+     : (<div>
+        <div className="navbar-link">
+         <Link className="Homepage-link" to="/signin">
+           Sign In
+         </Link>
+        </div> 
+       <div className="navbar-link">
+         <Link className="Homepage-link" to="/signup">
+           Sign Up
+         </Link>
+      </div>  
+     </div>
+     )
+    }
 
-  function handleMenu(event) {
-    setAnchorEl(event.currentTarget);
-  }
+// const linkToUserProfile = (props.user) => {
+//     return (
+        
+//     )
+// }
 
   function handleClose() {
     setAnchorEl(null);
@@ -46,67 +74,33 @@ export default function NavBar(props) {
 
   return (
     <div className={classes.root}>
-              <button label="Log Out" onClick={handleChange} />  
-    
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="LoginSwitch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
 
+    <div className="navbar">
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Sante
-          </Typography>
+            <img src={Logo} className="App-logo" alt="logo" />
+            <h1 className="navbar-header">Santé</h1>
+        
           {auth && (
             <div>
+              { props.loggedIn && 
               <IconButton
                 aria-label="Account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                // onClick={linkToUserProfile(props.user)}
                 color="inherit"
+                className="homepage-btn"
               >
                 <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
+              </IconButton > }       
+              <div className="navbar-link">{sessionHeader()}</div>
+ 
             </div>
           )}
         </Toolbar>
       </AppBar>
+      </div>
     </div>
   );
 }

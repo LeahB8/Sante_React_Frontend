@@ -22,7 +22,9 @@ export default class Consume extends React.Component {
   render(event) {
     const { concerns } = this.props;
     return (
-      <div>
+      <div className="card">
+        <h4>Foods to Consume</h4>
+
         <form>
           <select onChange={this.handleClick}>
             {concerns.map(concern => (

@@ -18,7 +18,7 @@ class App extends Component {
 
   signinAndSetToken = user => {
     this.setState({ user: {...user}, username: user.username, loggedIn: true });
-    this.props.history.push("/concerns");
+    this.props.history.push("/profile");
     localStorage.setItem("token", user.token);
   };
 
@@ -40,10 +40,10 @@ class App extends Component {
   }
 
   render() {
-    const { username, user } = this.state;
+    const { username, user, loggedIn } = this.state;
     return (
       <div className="App">
-        <NavBar signout={this.signout} />
+        <NavBar signout={this.signout}  user={user} loggedIn={loggedIn} signinAndSetToken={this.signinAndSetToken} />
         <ContentArea username={username} user={user} signinAndSetToken={this.signinAndSetToken} />
       </div>
     );

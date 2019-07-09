@@ -9,97 +9,93 @@ import { fetchUserInfo } from "../services/api";
 import Consume from "../components/Consume";
 import "../App.css";
 
-
 import Avoid from "../components/Avoid";
 
 export default class UserProfile extends React.Component {
-
-
-  componentDidMount() {
-      fetchUserInfo(this.props.user)
-      .then(data => this.setState({ firstName: data.firstName, weight: data.weight, height: data.height, age: data.age, goals: data.goals, userConcerns: data.concerns }))
-  }
-
-//   handleInput = event => {
-//     this.props.postUserInfoToServer({
-//       [event.target.name]: event.target.value
-//     });
-//   };
-
+  //   handleInput = event => {
+  //     this.props.postUserInfoToServer({
+  //       [event.target.name]: event.target.value
+  //     });
+  //   };
 
   handleSubmit = event => {
     event.preventDefault();
     // event.persist();
     let updatedUser = {
-        firstName: event.target.firstName.value,
-        weight: event.target.weight.value,
-        height: event.target.height.value,
-        age: event.target.age.value,
-        id: this.props.user.id
-    }
+      firstName: event.target.firstName.value,
+      weight: event.target.weight.value,
+      height: event.target.height.value,
+      age: event.target.age.value,
+      id: this.props.user.id
+    };
 
     this.props.postUserInfoToServer({
-        updatedUser
-      });
-
+      updatedUser
+    });
   };
 
   render() {
-    const { username, user, userConcerns, postUserInfoToServer, concerns, updateUserConcerns } = this.props;
+    const {
+      username,
+      user,
+      userConcerns,
+      postUserInfoToServer,
+      concerns,
+      updateUserConcerns
+    } = this.props;
     const { handleInput, handleSubmit } = this;
 
     return (
       <div>
-       <h1>Welcome, {user.username}</h1>
-          <div className="flexbox-div">
-            <div className="card">
-                <img className="user-image" src={UserIcon} />
-                   <div className="container">
-                        <p>Name: <b>{user.firstName}</b></p>
-                        <p>Weight: <b>{user.weight} kg</b> </p>
-                        <p>Height: <b>{user.height} cm</b></p>
-                        <p>Age: <b>{user.age}</b></p>
-                    </div>
+        <h1>Welcome, {user.username}</h1>
+        <div className="flexbox-div">
+          <div className="card">
+            <img className="user-image" src={UserIcon} />
+            <div className="container">
+              <p>
+                Name: <b>{user.firstName}</b>
+              </p>
+              <p>
+                Weight: <b>{user.weight} kg</b>{" "}
+              </p>
+              <p>
+                Height: <b>{user.height} cm</b>
+              </p>
+              <p>
+                Age: <b>{user.age}</b>
+              </p>
             </div>
+          </div>
 
-
-        <form onSubmit={handleSubmit} className="card">
+          <form onSubmit={handleSubmit} className="card">
             <h4>Update my Info</h4>
-          <input
-            name="firstName"
-            type="text"
-            placeholder="First Name"
-          /><br></br>
-          <input
-            name="weight"
-            type="number"
-            placeholder="Weight (KG)"
-          /><br></br>
-          <input
-            name="height"
-            type="number"
-            placeholder="Height (CM)"
-          /><br></br>
-          <input
-            name="age"
-            type="number"
-            placeholder="Age"
-          /><br></br>
-          <button type="submit">
-            Submit
-          </button>
-        </form>
+            <input name="firstName" type="text" placeholder="First Name" />
+            <br />
+            <input name="weight" type="number" placeholder="Weight (KG)" />
+            <br />
+            <input name="height" type="number" placeholder="Height (CM)" />
+            <br />
+            <input name="age" type="number" placeholder="Age" />
+            <br />
+            <button type="submit">Submit</button>
+          </form>
 
-            <ConcernList user={user} updateUserConcerns={updateUserConcerns} concerns={concerns} userConcerns={userConcerns} key={user.id} />
-            <UserGoals
+          <ConcernList
             user={user}
-            updateGoals={this.updateGoals}
+            updateUserConcerns={updateUserConcerns}
+            concerns={concerns}
+            userConcerns={userConcerns}
+            key={user.id}
+          />
+          <UserGoals
+            user={user}
+            updateGoals={this.props.updateGoals}
             handleSubmit={this.handleSubmit}
-            key={user.id} 
-            />
-            <Consume userConcerns={userConcerns} key={user.id}  />
-            <Avoid userConcerns={userConcerns} />
-            </div>
+            key={user.id}
+          />
+          <Consume userConcerns={userConcerns} key={user.id} />
+          <Avoid userConcerns={userConcerns} />
+        </div>
       </div>
     );
   }

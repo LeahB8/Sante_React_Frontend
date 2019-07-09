@@ -1,30 +1,31 @@
 import React from "react";
 
 export default class Avoid extends React.Component {
-  state = {
-    avoid: []
-  };
+  // state = {
+  //   avoid: []
+  // };
 
-  componentDidMount() {
-    const { userConcerns } = this.props;
+  // componentDidMount() {
+  //   const { userConcerns } = this.props;
+  //   const avoidArray = [...this.state.avoid];
 
-    userConcerns.forEach(concern => {
-      fetch(
-        `https://api.nutridigm.com/api/v1/nutridigm/topitemstoavoid?subscriptionId=test&problemId=` +
-          `${concern.problemID}`
-      )
-        .then(data => data.json())
-        .then(data =>
-          this.setState({
-            avoid: [...this.state.avoid, data]
-          })
-        );
-    });
-  }
+  //   userConcerns.forEach(concern => {
+  //     fetch(
+  //       `https://api.nutridigm.com/api/v1/nutridigm/topitemstoavoid?subscriptionId=test&problemId=` +
+  //         `${concern.problemID}`
+  //     )
+  //       .then(data => data.json())
+  //       .then(data => avoidArray.push(data));
+  //   });
+  //   this.setState({
+  //     avoid: avoidArray
+  //   });
+  // }
 
   render() {
     return (
-      <div>
+      <div className="card">
+        <h4>Foods to Avoid</h4>
         {/* <form>
           <select onChange={this.handleClick}>
             {concerns.map(concern => (
@@ -34,7 +35,10 @@ export default class Avoid extends React.Component {
             ))}
           </select>
         </form> */}
-        <p>{this.state.avoid}</p>
+
+        {this.props.userConcerns.map(concern => (
+          <p>{concern.avoid}</p>
+        ))}
       </div>
     );
   }

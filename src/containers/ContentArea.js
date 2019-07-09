@@ -21,7 +21,15 @@ export default class ContentArea extends React.Component {
 
   render() {
     const { concerns } = this.state;
-    const { signinAndSetToken, username, user, userConcerns, postUserInfoToServer, updateUserConcerns } = this.props;
+    const {
+      signinAndSetToken,
+      username,
+      user,
+      userConcerns,
+      postUserInfoToServer,
+      updateUserConcerns,
+      updateGoals
+    } = this.props;
 
     return (
       <div>
@@ -48,11 +56,12 @@ export default class ContentArea extends React.Component {
                 {...props}
                 concerns={concerns}
                 userConcerns={userConcerns}
-                key={user.id} 
+                key={user.id}
                 user={user}
                 username={username}
                 postUserInfoToServer={postUserInfoToServer}
                 updateUserConcerns={updateUserConcerns}
+                updateGoals={updateGoals}
               />
             )}
           />

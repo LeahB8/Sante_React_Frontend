@@ -1,27 +1,25 @@
 import React from "react";
 
 export default class Consume extends React.Component {
-  state = {
-    consume: []
-  };
+  // state = {
+  //   consume: []
+  // };
 
-  componentDidMount() {
-    const { userConcerns } = this.props;
+  // componentDidMount() {
+  //   const { userConcerns } = this.props;
+  //   console.log(userConcerns);
+  //   const concernsArray = [...this.state.consume];
 
-    userConcerns.forEach(concern => {
-      console.log(concern)
-      fetch(
-        `https://api.nutridigm.com/api/v1/nutridigm/topitemstoavoid?subscriptionId=test&problemId=` +
-          `${concern.problemID}`
-      )
-        // .then(data => data.json())
-        .then(data =>
-          this.setState({
-            consume: [...this.state.consume, data]
-          })
-        );
-    });
-  }
+
+  //   userConcerns.forEach(concern => {
+  //     <div>
+  //       <p>{concern.consume[0]}</p>;
+  //     </div>;
+  //   });
+  //   this.setState({
+  //     consume: concernsArray
+  //   });
+  // }
 
   render() {
     return (
@@ -29,7 +27,7 @@ export default class Consume extends React.Component {
         <h4>Top Foods to Consume</h4>
 
         {/* <form> */}
-      {/* <div> */}
+        {/* <div> */}
         {/* <form>
           <select onChange={this.handleClick}>
             {concerns.map(concern => (
@@ -39,7 +37,9 @@ export default class Consume extends React.Component {
             ))}
           </select>
         </form> */}
-        <p>{this.state.consume}</p>
+        {this.props.userConcerns.map(concern => (
+          <p>{concern.consume}</p>
+        ))}
       </div>
     );
   }

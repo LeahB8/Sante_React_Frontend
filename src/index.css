@@ -32,10 +32,19 @@ code {
 
 .card input {
   border-radius: 5px;
-  height: 20px;
+  height: 25px;
   margin: 2px;
   width: 150px;
   font-size: 1em;
+  padding: 1px;
+}
+
+.card select {
+  height: 25px;
+  margin: 2px;
+  width: 200px;
+  font-size: 1em;
+  padding: 1px;
 }
 
 .card button {

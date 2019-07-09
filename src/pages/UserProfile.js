@@ -15,10 +15,6 @@ import Avoid from "../components/Avoid";
 export default class UserProfile extends React.Component {
 
 
-  componentDidMount() {
-      fetchUserInfo(this.props.user)
-      .then(data => this.setState({ firstName: data.firstName, weight: data.weight, height: data.height, age: data.age, goals: data.goals, userConcerns: data.concerns }))
-  }
 
 //   handleInput = event => {
 //     this.props.postUserInfoToServer({
@@ -90,14 +86,16 @@ export default class UserProfile extends React.Component {
           </button>
         </form>
 
-            <ConcernList user={user} updateUserConcerns={updateUserConcerns} concerns={concerns} userConcerns={userConcerns} key={user.id} />
+            <ConcernList 
+            user={user} updateUserConcerns={updateUserConcerns} 
+            concerns={concerns} userConcerns={userConcerns} 
+            />
             <UserGoals
             user={user}
             updateGoals={this.updateGoals}
             handleSubmit={this.handleSubmit}
-            key={user.id} 
             />
-            <Consume userConcerns={userConcerns} key={user.id}  />
+            <Consume userConcerns={userConcerns}  />
             <Avoid userConcerns={userConcerns} />
             </div>
       </div>

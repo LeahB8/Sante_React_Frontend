@@ -14,7 +14,7 @@ export default class Consume extends React.Component {
         `https://api.nutridigm.com/api/v1/nutridigm/topitemstoavoid?subscriptionId=test&problemId=` +
           `${concern.problemID}`
       )
-        .then(data => data.json())
+        // .then(data => data.json())
         .then(data =>
           this.setState({
             consume: [...this.state.consume, data]
@@ -26,7 +26,7 @@ export default class Consume extends React.Component {
   render() {
     return (
       <div className="card">
-        <h4>Foods to Consume</h4>
+        <h4>Top Foods to Consume</h4>
 
         {/* <form> */}
       {/* <div> */}

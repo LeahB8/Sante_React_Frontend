@@ -28,8 +28,9 @@ export default class SignUpForm extends Component {
     const { handleSubmit } = this
 
     return (
-      <div className="sign-in-up-form" >
-        <h3>Sign Up:</h3> <br/>
+      <div className="signup-container">
+      <div className="signup-card" >
+        <h3>Sign Up</h3> <br/>
         <hr/>
         <p>Please enter a Username:</p>
 
@@ -53,8 +54,8 @@ export default class SignUpForm extends Component {
         </Button>
 
         </form>
-    
-      </div>
+    </div>
+  </div>
     )
   }
 }

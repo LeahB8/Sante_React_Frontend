@@ -18,17 +18,7 @@ body {
   color: white;
 }
 
-.navbar-header {
-  /* background-color: #0d6fee; */
-  /* min-height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* font-size: calc(10px + 2vmin); */
-  font-size: 80px;
-  color: white;
-}
+
 
 .App-link {
   color: #61dafb;
@@ -57,20 +47,8 @@ body {
   background-color: #09a9f3;
 }
 
-.navbar {
-  font-family: 'Lato', sans-serif;
-  display: flex;
-}
 
-.navbar-link {
-  float: left;
-  display: block;
-  color: #716F72;
-  padding: 10px 12px;
-  text-decoration: none;
-  margin-top: auto;
-  margin-bottom: auto;
-}
+
 
 .sign-in-up-form {
   text-align: center;
@@ -99,14 +77,6 @@ body {
   justify-content: right;
 }
 
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  max-width:20%;
-  max-height:20%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-}
+
 
 

@@ -9,8 +9,10 @@ export default class WelcomePage extends React.Component {
   render() {
     return (
       <div>
-        <h3>Welcome to Santé</h3>
-        <h4>An easy way to manage your health</h4>
+        <h1>Welcome to Santé</h1>
+        <h3>An easy way to manage your health</h3>
+        <h3>through a personalised nutrition and health conscious approach</h3>
+
         <img src={Logo} />
       </div>
     );

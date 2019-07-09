@@ -1,12 +1,16 @@
 import React from "react";
-import Concern from "./Concern";
 
 export default class ConcernList extends React.Component {
-  handleClick = event => {
+  
+  handleSubmit = event => {
     event.preventDefault();
+    // this.props.updateUserConcerns(
+    //   this.props.user,
+    //   event.target.concern.value
+    // );
     if (
-      this.props.userConcerns.map(
-        userConcern => userConcern.id == event.target.concern.value
+      this.props.userConcerns.find(
+        userConcern => userConcern.id === Number(event.target.concern.value)
       )
     ) {
       alert("You have already added this concern.");
@@ -14,9 +18,13 @@ export default class ConcernList extends React.Component {
       this.props.updateUserConcerns(
         this.props.user,
         event.target.concern.value
-      );
+      ).then(this.props.setUserConcerns(this.props.user))
     }
   };
+
+  handleClick = event => {
+    this.props.deleteUserConcernsFromServer(event.target.value)
+  }
 
   render() {
     const { concerns, userConcerns, user } = this.props;
@@ -25,13 +33,7 @@ export default class ConcernList extends React.Component {
       <div className="card">
         <h4>Health and Dietary Concerns</h4>
 
-        {/* <div> */}
-        {/* {userConcerns.map(userConcern => (
-            <p>{userConcern}</p>
-          ))} */}
-        {/* </div> */}
-
-        <form onSubmit={this.handleClick}>
+        <form onSubmit={this.handleSubmit}>
           <select name="concern">
             {concerns.map(concern => (
               <option value={concern.id}>{concern.problem}</option>
@@ -40,7 +42,10 @@ export default class ConcernList extends React.Component {
           <button type="submit">Add</button>
         </form>
         {this.props.userConcerns.map(concern => (
-          <p>{concern.problem}</p>
+          <p>
+          {concern.problem}
+          <button value={concern.id} className="delete-btn" onClick={this.handleClick}>x</button>
+          </p>
         ))}
       </div>
     );

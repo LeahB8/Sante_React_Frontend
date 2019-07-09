@@ -28,7 +28,12 @@ export default class ContentArea extends React.Component {
       userConcerns,
       postUserInfoToServer,
       updateUserConcerns,
-      updateGoals
+      updateGoals,
+      deleteUserConcernsFromServer,
+      userGoals,
+      deleteGoalFromServer,
+      setUserConcerns
+
     } = this.props;
 
     return (
@@ -62,6 +67,10 @@ export default class ContentArea extends React.Component {
                 postUserInfoToServer={postUserInfoToServer}
                 updateUserConcerns={updateUserConcerns}
                 updateGoals={updateGoals}
+                deleteUserConcernsFromServer={deleteUserConcernsFromServer}
+                userGoals={userGoals}
+                deleteGoalFromServer={deleteGoalFromServer}
+                setUserConcerns={setUserConcerns}
               />
             )}
           />

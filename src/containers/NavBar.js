@@ -62,9 +62,6 @@ const sessionHeader = () => {
      )
     }
 
-const linkToUserProfile = () => {
-    this.props.history.push("/profile");
-}
 
   function handleClose() {
     setAnchorEl(null);
@@ -81,17 +78,16 @@ const linkToUserProfile = () => {
         
           {auth && (
             <div>
-              { props.loggedIn && 
-              <IconButton
-                aria-label="Account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={linkToUserProfile()}
-                color="inherit"
-                className="homepage-btn"
-              >
+              {/* { props.loggedIn && 
+               <IconButton
+              aria-label="Account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit"
+              className="homepage-btn">
                 <AccountCircle />
-              </IconButton > }       
+              </IconButton > } */}
+                   
               <div className="navbar-link">{sessionHeader()}</div>
  
             </div>

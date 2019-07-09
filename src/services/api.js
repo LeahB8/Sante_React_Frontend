@@ -15,11 +15,13 @@ export function validate() {
   }).then(resp => resp.json());
 }
 
-// export function getUserConcerns() {
-//   return fetch(`http://localhost:3001/users/${user.id}}/concerns`, {
-//     headers: { Authorisation: localStorage.token }
-//   }).then(resp => resp.json());
-// }
+export function getUserConcerns(user) {
+  return fetch(`http://localhost:3001/users/${user.id}}/concerns`, {
+    headers: {      
+    "Content-Type": "application/json",
+    Authorisation: localStorage.token }
+  });
+}
 
 export function getConcerns() {
   return fetch("http://localhost:3001/concerns").then(resp => resp.json());
@@ -42,14 +44,11 @@ export function fetchUserInfo(user) {
   return fetch(baseUrl + `/users/${user.id}`);
 }
 
-
-
-
 export default {
   signin,
   validate,
   getConcerns,
   createUser,
-//   getUserConcerns,
+  getUserConcerns,
   fetchUserInfo
 };

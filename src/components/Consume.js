@@ -10,6 +10,7 @@ export default class Consume extends React.Component {
   //   console.log(userConcerns);
   //   const concernsArray = [...this.state.consume];
 
+
   //   userConcerns.forEach(concern => {
   //     <div>
   //       <p>{concern.consume[0]}</p>;
@@ -23,7 +24,7 @@ export default class Consume extends React.Component {
   render() {
     return (
       <div className="card">
-        <h4>Foods to Consume</h4>
+        <h4>Top Foods to Consume</h4>
 
         {/* <form> */}
         {/* <div> */}

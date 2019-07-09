@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
 
 import "./App.css";
 import NavBar from "./containers/NavBar";
@@ -91,6 +93,17 @@ class App extends Component {
     const { username, user, userConcerns, loggedIn } = this.state;
     return (
       <div className="App">
+
+//         <Route component={props => <NavBar {...props}
+//         signout={this.signout} user={user} 
+//         loggedIn={loggedIn} signinAndSetToken={this.signinAndSetToken} 
+//         />}/>
+//         <ContentArea 
+//         updateUserConcerns={this.updateUserConcerns} 
+//         postUserInfoToServer={this.postUserInfoToServer} 
+//         username={username} user={user} key={user.id} userConcerns={userConcerns} 
+//         signinAndSetToken={this.signinAndSetToken} 
+
         <NavBar
           signout={this.signout}
           user={user}

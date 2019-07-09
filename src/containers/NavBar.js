@@ -62,11 +62,9 @@ const sessionHeader = () => {
      )
     }
 
-// const linkToUserProfile = (props.user) => {
-//     return (
-        
-//     )
-// }
+const linkToUserProfile = () => {
+    this.props.history.push("/profile");
+}
 
   function handleClose() {
     setAnchorEl(null);
@@ -88,7 +86,7 @@ const sessionHeader = () => {
                 aria-label="Account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                // onClick={linkToUserProfile(props.user)}
+                onClick={linkToUserProfile()}
                 color="inherit"
                 className="homepage-btn"
               >

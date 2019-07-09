@@ -12,6 +12,7 @@ import "../App.css";
 import Avoid from "../components/Avoid";
 
 export default class UserProfile extends React.Component {
+
   //   handleInput = event => {
   //     this.props.postUserInfoToServer({
   //       [event.target.name]: event.target.value
@@ -80,6 +81,7 @@ export default class UserProfile extends React.Component {
             <button type="submit">Submit</button>
           </form>
 
+
           <ConcernList
             user={user}
             updateUserConcerns={updateUserConcerns}
@@ -91,6 +93,7 @@ export default class UserProfile extends React.Component {
             user={user}
             updateGoals={this.props.updateGoals}
             handleSubmit={this.handleSubmit}
+
             key={user.id}
           />
           <Consume userConcerns={userConcerns} key={user.id} />

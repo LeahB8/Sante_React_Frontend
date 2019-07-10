@@ -8,7 +8,7 @@ body {
 }
 
 .App-header {
-  background-color: #0d6fee;
+  background-color: ##D1CABE;
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -17,8 +17,6 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-
 
 .App-link {
   color: #61dafb;
@@ -45,9 +43,8 @@ body {
 
 .button:hover {
   background-color: #09a9f3;
+  cursor: pointer;
 }
-
-
 
 
 .sign-in-up-form {

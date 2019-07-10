@@ -7,9 +7,12 @@
     "@material-ui/icons": "^3.0.2",
     "material-ui": "^0.20.2",
     "react": "^16.8.6",
+    "react-countdown-clock": "^2.6.0",
     "react-dom": "^16.8.6",
+    "react-player": "^1.11.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-soundcloud": "^0.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

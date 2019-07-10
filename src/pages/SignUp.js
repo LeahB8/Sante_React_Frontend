@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-// import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 // import { signin } from '../services/api'
 // import { Link } from 'react-router-dom'
@@ -31,24 +31,20 @@ export default class SignUpForm extends Component {
       <div className="signup-container">
       <div className="signup-card" >
         <h3>Sign Up</h3> <br/>
-        <hr/>
         <p>Please enter a Username:</p>
 
         <form onSubmit={handleSubmit}>
-        <input
+        <TextField
           name='username'
         />
-        <hr/>
-        <br />
-        <hr/>
+    
         <p>Please enter a Password:</p>
-        <input
+        <TextField
           name='password'
           type='password'
         />
 
-        <hr/>
-        <br />
+    <br/>
         <Button type="submit" variant='contained' color='primary'>
           SUBMIT
         </Button>

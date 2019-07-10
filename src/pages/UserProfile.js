@@ -7,12 +7,12 @@ import UserIcon from "../userIcon.jpg";
 import UserGoals from "../components/UserGoals";
 import { fetchUserInfo } from "../services/api";
 import Consume from "../components/Consume";
+import Timer from "../components/Timer";
 import "../App.css";
 
 import Avoid from "../components/Avoid";
 
 export default class UserProfile extends React.Component {
-
   //   handleInput = event => {
   //     this.props.postUserInfoToServer({
   //       [event.target.name]: event.target.value
@@ -31,8 +31,6 @@ export default class UserProfile extends React.Component {
     };
     this.props.postUserInfoToServer(user);
   };
-
-
 
   render() {
     const {
@@ -55,10 +53,10 @@ export default class UserProfile extends React.Component {
         <h1>Welcome back, {user.username}</h1>
         <div className="flexbox-div">
           <div className="card">
-            <img className="user-image" 
-            src={user.image_url === null ?
-                UserIcon :
-                (user.image_url) } />
+            <img
+              className="user-image"
+              src={user.image_url === null ? UserIcon : user.image_url}
+            />
             <div className="container">
               <p>
                 Name: <b>{user.firstName}</b>
@@ -90,7 +88,6 @@ export default class UserProfile extends React.Component {
             <button type="submit">Submit</button>
           </form>
 
-
           <ConcernList
             user={user}
             updateUserConcerns={updateUserConcerns}
@@ -110,6 +107,7 @@ export default class UserProfile extends React.Component {
           />
           <Consume userConcerns={userConcerns} key={user.id} />
           <Avoid userConcerns={userConcerns} />
+          <Timer />
         </div>
       </div>
     );

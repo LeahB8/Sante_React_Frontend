@@ -9,24 +9,33 @@ export default class UserGoals extends React.Component {
   };
 
   handleDeleteGoal = event => {
-    this.props.deleteGoalFromServer(event.target.value)
-}
+    this.props.deleteGoalFromServer(event.target.value);
+  };
 
   render() {
     const { userGoals, updateGoals, handleSubmit, user } = this.props;
     return (
       <div className="card">
         <h4>Fitness and Wellness Goals</h4>
-        
+
         <form onSubmit={this.handleSubmit}>
           <input name="goals" type="text" placeholder="Goal" />
           <button type="submit">Add</button>
         </form>
-        { userGoals.map(goal =>
-        <p>
-        {goal.content}
-        <button value={goal.id} className="delete-btn" onClick={this.handleDeleteGoal}>x</button>
-        </p>)}
+        {userGoals.map(goal => (
+          <p>
+            {goal.content}
+
+            <button
+              value={goal.id}
+              className="delete-btn"
+              onClick={this.handleDeleteGoal}
+            >
+              X
+            </button>
+            <input type="checkbox" />
+          </p>
+        ))}
       </div>
     );
   }

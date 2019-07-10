@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-
 import "./App.css";
 import NavBar from "./containers/NavBar";
 import ContentArea from "./containers/ContentArea";
@@ -13,9 +12,7 @@ import { withRouter } from "react-router-dom";
 const baseUrl = "http://localhost:3001";
 
 class App extends Component {
-
   //----------------------- state and componentDidMount -------------------//
-
 
   state = {
     user: {},
@@ -37,7 +34,7 @@ class App extends Component {
     }
   }
 
-//----------------------- signin and signout -------------------//
+  //----------------------- signin and signout -------------------//
 
   signinAndSetToken = userObj => {
     this.setState({
@@ -56,9 +53,9 @@ class App extends Component {
     localStorage.removeItem("token");
   };
 
-//----------------------- server methods - posting and deleting -------------------//
+  //----------------------- server methods - posting and deleting -------------------//
 
-  postUserInfoToServer = ( user ) => {
+  postUserInfoToServer = user => {
     return fetch(baseUrl + `/users/${user.id}`, {
       method: "PATCH",
       headers: {
@@ -71,31 +68,42 @@ class App extends Component {
   //----------------------- user concerns -------------------//
 
   updateUserConcerns = (user, concernId) => {
-      return fetch(baseUrl + `/users/${user.id}/concerns`, {
+    return fetch(baseUrl + `/users/${user.id}/concerns`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ user_id: user.id, concern_id: concernId })
-    })
+    });
   };
 
-  setUserConcerns = (user) => {
+  setUserConcerns = user => {
     getUserConcerns(user)
-    .then(resp => resp.json())
-    .then(data => this.setState({ userConcerns: data }))
-  }
+      .then(resp => resp.json())
+      .then(data => this.setState({ userConcerns: data }));
+  };
 
-  deleteUserConcernsFromServer = (userConcernId) => {
-    return fetch(baseUrl + `/users/${this.state.user.id}/concerns/${userConcernId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
+  deleteUserConcernsFromServer = userConcernId => {
+    return fetch(
+      baseUrl + `/users/${this.state.user.id}/concerns/${userConcernId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-    }).then(this.setState({ userConcerns: [...this.state.userConcerns.filter(userConcern => userConcern.id !== userConcernId)] }))
-  }
+    ).then(
+      this.setState({
+        userConcerns: [
+          ...this.state.userConcerns.filter(
+            userConcern => userConcern.id !== userConcernId
+          )
+        ]
+      })
+    );
+  };
 
-//----------------------- user goals -------------------//
+  //----------------------- user goals -------------------//
 
   updateGoals = (user, goal) => {
     return fetch(baseUrl + `/goals`, {
@@ -103,11 +111,12 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ user_id: user.id, content: goal } )
+      body: JSON.stringify({ user_id: user.id, content: goal })
     })
-    .then(resp => resp.json())
-    .then(goalObj => this.setState({ userGoals: [...this.state.userGoals, goalObj] })
-    );
+      .then(resp => resp.json())
+      .then(goalObj =>
+        this.setState({ userGoals: [...this.state.userGoals, goalObj] })
+      );
   };
 
   deleteGoalFromServer = goalID => {
@@ -116,9 +125,12 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(this.setState({ userGoals: [...this.state.userGoals.filter(goal => goal.id !== goalID)] })
-    )
-  }
+    }).then(
+      this.setState({
+        userGoals: [...this.state.userGoals.filter(goal => goal.id !== goalID)]
+      })
+    );
+  };
 
   //----------------------- rendering -------------------//
 
@@ -126,7 +138,6 @@ class App extends Component {
     const { username, user, userConcerns, loggedIn, userGoals } = this.state;
     return (
       <div className="App">
-
         <NavBar
           signout={this.signout}
           user={user}

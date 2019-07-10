@@ -1,7 +1,6 @@
 import React from "react";
 
 export default class ConcernList extends React.Component {
-  
   handleSubmit = event => {
     event.preventDefault();
     // this.props.updateUserConcerns(
@@ -15,16 +14,15 @@ export default class ConcernList extends React.Component {
     ) {
       alert("You have already added this concern.");
     } else {
-      this.props.updateUserConcerns(
-        this.props.user,
-        event.target.concern.value
-      ).then(this.props.setUserConcerns(this.props.user))
+      this.props
+        .updateUserConcerns(this.props.user, event.target.concern.value)
+        .then(this.props.setUserConcerns(this.props.user));
     }
   };
 
   handleClick = event => {
-    this.props.deleteUserConcernsFromServer(event.target.value)
-  }
+    this.props.deleteUserConcernsFromServer(event.target.value);
+  };
 
   render() {
     const { concerns, userConcerns, user } = this.props;
@@ -43,8 +41,14 @@ export default class ConcernList extends React.Component {
         </form>
         {this.props.userConcerns.map(concern => (
           <p>
-          {concern.problem}
-          <button value={concern.id} className="delete-btn" onClick={this.handleClick}>x</button>
+            {concern.problem}
+            <button
+              value={concern.id}
+              className="delete-btn"
+              onClick={this.handleClick}
+            >
+              x
+            </button>
           </p>
         ))}
       </div>

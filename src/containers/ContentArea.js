@@ -33,7 +33,13 @@ export default class ContentArea extends React.Component {
       deleteUserConcernsFromServer,
       userGoals,
       deleteGoalFromServer,
+<<<<<<< HEAD
       setUserConcerns
+=======
+      setUserConcerns,
+      setUserGoals
+
+>>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
     } = this.props;
 
     return (
@@ -70,6 +76,7 @@ export default class ContentArea extends React.Component {
                 deleteUserConcernsFromServer={deleteUserConcernsFromServer}
                 userGoals={userGoals}
                 deleteGoalFromServer={deleteGoalFromServer}
+                setUserGoals={setUserGoals}
                 setUserConcerns={setUserConcerns}
               />
             )}

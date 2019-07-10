@@ -6,7 +6,7 @@ import NavBar from "./containers/NavBar";
 import ContentArea from "./containers/ContentArea";
 import ReactDOM from "react-dom";
 
-import { validate, fetchUserInfo, getUserConcerns } from "./services/api";
+import { validate, fetchUserInfo, getUserConcerns, getUserGoals } from "./services/api";
 import { withRouter } from "react-router-dom";
 
 const baseUrl = "http://localhost:3001";
@@ -83,6 +83,7 @@ class App extends Component {
       .then(data => this.setState({ userConcerns: data }));
   };
 
+<<<<<<< HEAD
   deleteUserConcernsFromServer = userConcernId => {
     return fetch(
       baseUrl + `/users/${this.state.user.id}/concerns/${userConcernId}`,
@@ -102,6 +103,18 @@ class App extends Component {
       })
     );
   };
+=======
+
+
+  deleteUserConcernsFromServer = (userConcernId) => {
+    return fetch(baseUrl + `/users/${this.state.user.id}/concerns/${userConcernId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+  }
+>>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
 
   //----------------------- user goals -------------------//
 
@@ -119,18 +132,29 @@ class App extends Component {
       );
   };
 
+    setUserGoals = (user) => {
+    getUserGoals(user)
+    .then(resp => resp.json())
+    .then(data => this.setState({ userGoals: data }))
+  }
+
   deleteGoalFromServer = goalID => {
     return fetch(baseUrl + `/goals/${goalID}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       }
+<<<<<<< HEAD
     }).then(
       this.setState({
         userGoals: [...this.state.userGoals.filter(goal => goal.id !== goalID)]
       })
     );
   };
+=======
+    })
+  }
+>>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
 
   //----------------------- rendering -------------------//
 
@@ -156,6 +180,7 @@ class App extends Component {
           userGoals={userGoals}
           deleteGoalFromServer={this.deleteGoalFromServer}
           setUserConcerns={this.setUserConcerns}
+          setUserGoals={this.setUserGoals}
         />
       </div>
     );

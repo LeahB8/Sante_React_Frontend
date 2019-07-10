@@ -9,6 +9,7 @@ import { fetchUserInfo } from "../services/api";
 import Consume from "../components/Consume";
 import Timer from "../components/Timer";
 import "../App.css";
+import ReactPlayer from 'react-player'
 
 import Avoid from "../components/Avoid";
 
@@ -43,20 +44,31 @@ export default class UserProfile extends React.Component {
       deleteUserConcernsFromServer,
       userGoals,
       deleteGoalFromServer,
-      setUserConcerns
+      setUserConcerns,
+      setUserGoals
     } = this.props;
 
     const { handleInput, handleSubmit } = this;
 
     return (
       <div>
-        <h1>Welcome back, {user.username}</h1>
+        <h1><strong>Welcome back, {user.username}</strong></h1>
+        <ReactPlayer className="mp3-player" height="20px;" width="100%;" playing="true" url='https://soundcloud.com/newagemusicgarden/3-hours-of-relaxing-music'/>
+
         <div className="flexbox-div">
           <div className="card">
+<<<<<<< HEAD
             <img
               className="user-image"
               src={user.image_url === null ? UserIcon : user.image_url}
             />
+=======
+              <h2>My Info</h2>
+            <img className="user-image" 
+            src={user.image_url === null ?
+                UserIcon :
+                (user.image_url) } />
+>>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
             <div className="container">
               <p>
                 Name: <b>{user.firstName}</b>
@@ -74,7 +86,7 @@ export default class UserProfile extends React.Component {
           </div>
 
           <form onSubmit={handleSubmit} className="card">
-            <h4>Update my Info</h4>
+            <h2>Update my Info</h2>
             <input name="firstName" type="text" placeholder="First Name" />
             <br />
             <input name="weight" type="number" placeholder="Weight (kg)" />
@@ -104,6 +116,7 @@ export default class UserProfile extends React.Component {
             handleSubmit={this.handleSubmit}
             key={user.id}
             deleteGoalFromServer={deleteGoalFromServer}
+            setUserGoals={setUserGoals}
           />
           <Consume userConcerns={userConcerns} key={user.id} />
           <Avoid userConcerns={userConcerns} />

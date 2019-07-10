@@ -71,8 +71,8 @@ const sessionHeader = () => {
     <div className={classes.root}>
 
     <div className="navbar">
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar className="nav-header" position="static">
+        <Toolbar className="toolbar-header">
             <img src={Logo} className="App-logo" alt="logo" />
             <h1 className="navbar-header">Santé</h1>
         

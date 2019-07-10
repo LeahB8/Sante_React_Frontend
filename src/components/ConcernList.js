@@ -18,12 +18,14 @@ export default class ConcernList extends React.Component {
       this.props.updateUserConcerns(
         this.props.user,
         event.target.concern.value
-      ).then(this.props.setUserConcerns(this.props.user))
+      ).then(() => this.props.setUserConcerns(this.props.user))
     }
   };
 
   handleClick = event => {
     this.props.deleteUserConcernsFromServer(event.target.value)
+    .then(() => this.props.setUserConcerns(this.props.user))
+
   }
 
   render() {
@@ -31,7 +33,7 @@ export default class ConcernList extends React.Component {
 
     return (
       <div className="card">
-        <h4>Health and Dietary Concerns</h4>
+        <h2>Health and Dietary Concerns</h2>
 
         <form onSubmit={this.handleSubmit}>
           <select name="concern">
@@ -44,7 +46,8 @@ export default class ConcernList extends React.Component {
         {this.props.userConcerns.map(concern => (
           <p>
           {concern.problem}
-          <button value={concern.id} className="delete-btn" onClick={this.handleClick}>x</button>
+          <button className="fa fa-remove" value={concern.id} onClick={this.handleClick}>
+</button>
           </p>
         ))}
       </div>

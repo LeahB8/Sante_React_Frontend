@@ -16,7 +16,15 @@ export function validate() {
 }
 
 export function getUserConcerns(user) {
-  return fetch(`http://localhost:3001/users/${user.id}}/concerns`, {
+  return fetch(`http://localhost:3001/users/${user.id}/concerns`, {
+    headers: {      
+    "Content-Type": "application/json",
+    Authorisation: localStorage.token }
+  });
+}
+
+export function getUserGoals(user) {
+  return fetch(`http://localhost:3001/users/${user.id}/goals`, {
     headers: {      
     "Content-Type": "application/json",
     Authorisation: localStorage.token }
@@ -50,5 +58,6 @@ export default {
   getConcerns,
   createUser,
   getUserConcerns,
-  fetchUserInfo
+  fetchUserInfo,
+  getUserGoals
 };

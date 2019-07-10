@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import ConcernList from "../components/ConcernList";
 import { getConcerns } from "../services/api";
 import { postUserInfoToServer } from "../services/api";
-import Timer from "../components/Timer";
 
 import SignInForm from "../pages/LogIn";
 import SignUpForm from "../pages/SignUp";
@@ -33,13 +32,8 @@ export default class ContentArea extends React.Component {
       deleteUserConcernsFromServer,
       userGoals,
       deleteGoalFromServer,
-<<<<<<< HEAD
-      setUserConcerns
-=======
       setUserConcerns,
       setUserGoals
-
->>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
     } = this.props;
 
     return (
@@ -76,8 +70,8 @@ export default class ContentArea extends React.Component {
                 deleteUserConcernsFromServer={deleteUserConcernsFromServer}
                 userGoals={userGoals}
                 deleteGoalFromServer={deleteGoalFromServer}
-                setUserGoals={setUserGoals}
                 setUserConcerns={setUserConcerns}
+                setUserGoals={setUserGoals}
               />
             )}
           />

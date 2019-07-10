@@ -14,29 +14,17 @@ export default class ConcernList extends React.Component {
     ) {
       alert("You have already added this concern.");
     } else {
-<<<<<<< HEAD
       this.props
         .updateUserConcerns(this.props.user, event.target.concern.value)
-        .then(this.props.setUserConcerns(this.props.user));
-=======
-      this.props.updateUserConcerns(
-        this.props.user,
-        event.target.concern.value
-      ).then(() => this.props.setUserConcerns(this.props.user))
->>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
+        .then(() => this.props.setUserConcerns(this.props.user));
     }
   };
 
   handleClick = event => {
-<<<<<<< HEAD
-    this.props.deleteUserConcernsFromServer(event.target.value);
+    this.props
+      .deleteUserConcernsFromServer(event.target.value)
+      .then(() => this.props.setUserConcerns(this.props.user));
   };
-=======
-    this.props.deleteUserConcernsFromServer(event.target.value)
-    .then(() => this.props.setUserConcerns(this.props.user))
-
-  }
->>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
 
   render() {
     const { concerns, userConcerns, user } = this.props;
@@ -55,20 +43,12 @@ export default class ConcernList extends React.Component {
         </form>
         {this.props.userConcerns.map(concern => (
           <p>
-<<<<<<< HEAD
             {concern.problem}
             <button
+              className="fa fa-remove"
               value={concern.id}
-              className="delete-btn"
               onClick={this.handleClick}
-            >
-              x
-            </button>
-=======
-          {concern.problem}
-          <button className="fa fa-remove" value={concern.id} onClick={this.handleClick}>
-</button>
->>>>>>> 944f2b2be32923bbbbf951ab501d66fc8d0159ad
+            />
           </p>
         ))}
       </div>

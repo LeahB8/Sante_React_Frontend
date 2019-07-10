@@ -2,11 +2,22 @@ import React from "react";
 import ReactCountdownClock from "react-countdown-clock";
 
 export default class Timer extends React.Component {
+  state = {
+    timer: 0,
+    paused: true
+  };
 
-handleSubmit = (event) => {
-    event.preventDefault()
-    ReactCountdownClock.props.seconds = event.target.timer.value
-}
+  handleSubmit = event => {
+    event.preventDefault();
+    this.setState({ timer: event.target.timer.value, paused: false });
+    event.target.timer.value = "";
+  };
+
+  handleClick = () => {
+    this.setState({
+      paused: !this.state.paused
+    });
+  };
 
   render() {
     return (
@@ -14,21 +25,20 @@ handleSubmit = (event) => {
         <h2>Meditation Timer</h2>
 
         <form onSubmit={this.handleSubmit}>
-            <input type='number' name="timer" />
-            <button>Select</button>
-            </form>
-            <br></br>
-            <br></br>
+          <input type="number" name="timer" placeholder="Enter Time In Secs" />
+          <button>Select</button>
+        </form>
+        <br />
+        <br />
 
-
-        <ReactCountdownClock 
-                seconds={500}
-                color="#D1CABE"
-                size={200}
-                showMilliseconds={false}
-                paused={true}
+        <ReactCountdownClock
+          onClick={this.handleClick}
+          seconds={this.state.timer}
+          color="#D1CABE"
+          size={200}
+          showMilliseconds={false}
+          paused={this.state.paused}
         />
-  
       </div>
     );
   }

@@ -22,4 +22,4 @@ A paired student project with a focus on using React as a front end technology a
 Near completion, but some refactoring would be useful.
 
 <h2>Credits</h2>
-Authors: Leah Boyd and Amari Ellington
+<strong>Authors</strong>: Leah Boyd and Amari Ellington
